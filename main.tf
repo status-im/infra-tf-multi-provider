@@ -10,17 +10,20 @@
 /* Digital Ocean */
 
 module "do-ams3" {
-  source       = "github.com/status-im/infra-tf-digital-ocean"
+  source    = "github.com/status-im/infra-tf-digital-ocean"
   /* specific */
-  count        = "${var.count}"
-  name         = "${var.name}"
-  env          = "${var.env}"
-  group        = "${var.group}"
+  count     = "${var.count}"
+  name      = "${var.name}"
+  env       = "${var.env}"
+  group     = "${var.group}"
   /* scaling */
-  size         = "${var.do_size}"
-  region       = "ams3"
+  size      = "${var.do_size}"
+  vol_size  = "${var.do_vol_size}"
+  region    = "ams3"
   /* general */
-  domain       = "${var.domain}"
+  domain     = "${var.domain}"
+  /* firewall */
+  open_ports = "${var.open_ports}"
 }
 
 resource "cloudflare_record" "do-ams3" {
