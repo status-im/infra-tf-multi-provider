@@ -17,6 +17,7 @@ variable group {
 
 variable domain {
   description = "DNS Domain to update"
+  default     = "statusim.net"
 }
 
 # Scaling

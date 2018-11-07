@@ -2,15 +2,26 @@
 
 This is a helper module used by Status internal repos like: [infra-hq](https://github.com/status-im/infra-hq), [infra-misc](https://github.com/status-im/infra-misc), [infra-eth-cluster](https://github.com/status-im/infra-eth-cluster), or [infra-swarm](https://github.com/status-im/infra-swarm).
 
+It allows for use of the following three cloud providers via one module:
+* [digital-ocean](https://github.com/status-im/infra-tf-digital-ocean)
+* [google-cloud](https://github.com/status-im/infra-tf-google-cloud)
+* [alibaba-cloud](https://github.com/status-im/infra-tf-alibaba-cloud)
+
 # Usage
 
 Simply import the modue using the `source` directive:
 ```hcl
-module "multi-provider" {
-  source = "github.com/status-im/infra-tf-multi-provider"
+module "widget" {
+  source     = "github.com/status-im/infra-tf-multi-provider"
+  count      = 2
+  env        = "widget"
+  group      = "widget"
+  do_size    = "s-1vcpu-2gb"
+  gc_size    = "n1-standard-1"
+  ac_size    = "ecs.sn1ne.large"
+  open_ports = ["1234-1234"]
 }
 ```
-
 [More details.](https://www.terraform.io/docs/modules/sources.html#github)
 
 # Variables
