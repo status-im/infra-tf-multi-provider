@@ -32,7 +32,7 @@ variable gc_size {
 }
 
 variable ac_size {
-  description = "Size of host to provision in Google Cloud."
+  description = "Size of host to provision in Alibaba Cloud."
   default     = "ecs.t5-lc1m1.small"
 }
 
