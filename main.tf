@@ -45,6 +45,7 @@ module "gc-us-central1-a" {
   group      = "${var.group}"
   /* scaling */
   type       = "${var.gc_size}"
+  vol_size   = "${var.gc_vol_size}"
   zone       = "us-central1-a"
   /* general */
   domain     = "${var.domain}"

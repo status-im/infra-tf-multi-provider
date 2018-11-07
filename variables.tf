@@ -37,6 +37,11 @@ variable gc_size {
   default     = "n1-standard-1"
 }
 
+variable gc_vol_size {
+  description = "Size in GiB of the host volume."
+  default     = 10
+}
+
 variable ac_size {
   description = "Size of host to provision in Alibaba Cloud."
   default     = "ecs.t5-lc1m1.small"
