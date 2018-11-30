@@ -26,14 +26,6 @@ module "do-ams3" {
   open_ports = "${var.open_ports}"
 }
 
-resource "cloudflare_record" "do-ams3" {
-  domain = "${var.domain}"
-  name   = "nodes.do-ams3.${var.env}.${terraform.workspace}"
-  value  = "${element(module.do-ams3.public_ips, count.index)}"
-  count  = "${var.count}"
-  type   = "A"
-}
-
 /* Google Cloud */
 
 module "gc-us-central1-a" {
