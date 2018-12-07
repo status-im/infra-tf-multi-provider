@@ -9,7 +9,7 @@
 
 /* Digital Ocean */
 
-module "do-ams3" {
+module "do-eu-amsterdam3" {
   source    = "github.com/status-im/infra-tf-digital-ocean"
   /* specific */
   count     = "${var.count}"
