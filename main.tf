@@ -30,6 +30,14 @@ module "do-eu-amsterdam3" {
   open_ports = var.open_ports
 }
 
+resource "cloudflare_record" "do-eu-amsterdam3" {
+  domain     = var.domain
+  name       = "nodes.do-ams3.${var.env}.${terraform.workspace}"
+  value      = module.do-eu-amsterdam3.public_ips[count.index]
+  count      = length(module.do-eu-amsterdam3.public_ips)
+  type       = "A"
+}
+
 /* Google Cloud */
 
 module "gc-us-central1-a" {
@@ -56,8 +64,8 @@ module "gc-us-central1-a" {
 resource "cloudflare_record" "gc-us-central1-a" {
   domain     = var.domain
   name       = "nodes.gc-us-central1-a.${var.env}.${terraform.workspace}"
-  value      = element(module.gc-us-central1-a.public_ips, count.index)
-  host_count = var.host_count
+  value      = module.gc-us-central1-a.public_ips[count.index]
+  count      = length(module.gc-us-central1-a.public_ips)
   type       = "A"
 }
 
@@ -86,8 +94,8 @@ module "ac-cn-hongkong-c" {
 resource "cloudflare_record" "ac-cn-hongkong-c" {
   domain     = var.domain
   name       = "nodes.ac-cn-hongkong-c.${var.env}.${terraform.workspace}"
-  value      = element(module.ac-cn-hongkong-c.public_ips, count.index)
-  host_count = var.host_count
+  value      = module.ac-cn-hongkong-c.public_ips[count.index]
+  count      = length(module.ac-cn-hongkong-c.public_ips)
   type       = "A"
 }
 
