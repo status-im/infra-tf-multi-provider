@@ -10,7 +10,7 @@
 /* Digital Ocean */
 
 module "do-eu-amsterdam3" {
-  source = "github.com/status-im/infra-tf-digital-ocean"
+  source = "github.com/status-im/infra-tf-digital-ocean?ref=tf-0.12"
 
   /* specific */
   name  = var.name
@@ -33,7 +33,7 @@ module "do-eu-amsterdam3" {
 /* Google Cloud */
 
 module "gc-us-central1-a" {
-  source = "github.com/status-im/infra-tf-google-cloud"
+  source = "github.com/status-im/infra-tf-google-cloud?ref=tf-0.12"
 
   /* specific */
   name  = var.name
@@ -64,7 +64,7 @@ resource "cloudflare_record" "gc-us-central1-a" {
 /* Alibaba Cloud */
 
 module "ac-cn-hongkong-c" {
-  source = "github.com/status-im/infra-tf-alibaba-cloud"
+  source = "github.com/status-im/infra-tf-alibaba-cloud?ref=tf-0.12"
 
   /* specific */
   name  = var.name
