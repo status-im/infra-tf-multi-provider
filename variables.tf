@@ -39,7 +39,7 @@ variable gc_size {
 
 variable gc_vol_size {
   description = "Size in GiB of the host volume."
-  default     = 10
+  default     = 15
 }
 
 variable ac_size {
