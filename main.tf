@@ -10,71 +10,84 @@
 /* Digital Ocean */
 
 module "do-eu-amsterdam3" {
-  source    = "github.com/status-im/infra-tf-digital-ocean"
+  source = "github.com/status-im/infra-tf-digital-ocean"
+
   /* specific */
-  count     = "${var.count}"
-  name      = "${var.name}"
-  env       = "${var.env}"
-  group     = "${var.group}"
+  name  = var.name
+  env   = var.env
+  group = var.group
+
   /* scaling */
-  size      = "${var.do_size}"
-  vol_size  = "${var.do_vol_size}"
-  region    = "ams3"
+  host_count = var.host_count
+  size       = var.do_size
+  vol_size   = var.do_vol_size
+  region     = "ams3"
+
   /* general */
-  domain     = "${var.domain}"
+  domain = var.domain
+
   /* firewall */
-  open_ports = "${var.open_ports}"
+  open_ports = var.open_ports
 }
 
 /* Google Cloud */
 
 module "gc-us-central1-a" {
-  source     = "github.com/status-im/infra-tf-google-cloud"
+  source = "github.com/status-im/infra-tf-google-cloud"
+
   /* specific */
-  count      = "${var.count}"
-  name       = "${var.name}"
-  env        = "${var.env}"
-  group      = "${var.group}"
+  name  = var.name
+  env   = var.env
+  group = var.group
+
   /* scaling */
-  type       = "${var.gc_size}"
-  vol_size   = "${var.gc_vol_size}"
+  host_count = var.host_count
+  type       = var.gc_size
+  vol_size   = var.gc_vol_size
   zone       = "us-central1-a"
+
   /* general */
-  domain     = "${var.domain}"
+  domain = var.domain
+
   /* firewall */
-  open_ports = "${var.open_ports}"
+  open_ports = var.open_ports
 }
 
 resource "cloudflare_record" "gc-us-central1-a" {
-  domain = "${var.domain}"
-  name   = "nodes.gc-us-central1-a.${var.env}.${terraform.workspace}"
-  value  = "${element(module.gc-us-central1-a.public_ips, count.index)}"
-  count  = "${var.count}"
-  type   = "A"
+  domain     = var.domain
+  name       = "nodes.gc-us-central1-a.${var.env}.${terraform.workspace}"
+  value      = element(module.gc-us-central1-a.public_ips, count.index)
+  host_count = var.host_count
+  type       = "A"
 }
 
 /* Alibaba Cloud */
 
 module "ac-cn-hongkong-c" {
-  source     = "github.com/status-im/infra-tf-alibaba-cloud"
+  source = "github.com/status-im/infra-tf-alibaba-cloud"
+
   /* specific */
-  count      = "${var.count}"
-  name       = "${var.name}"
-  env        = "${var.env}"
-  group      = "${var.group}"
+  name  = var.name
+  env   = var.env
+  group = var.group
+
   /* scaling */
-  type       = "${var.ac_size}"
+  host_count = var.host_count
+  type       = var.ac_size
   zone       = "cn-hongkong-c"
+
   /* general */
-  domain     = "${var.domain}"
+  domain = var.domain
+
   /* firewall */
-  open_ports = "${var.open_ports}"
+  open_ports = var.open_ports
 }
 
 resource "cloudflare_record" "ac-cn-hongkong-c" {
-  domain = "${var.domain}"
-  name   = "nodes.ac-cn-hongkong-c.${var.env}.${terraform.workspace}"
-  value  = "${element(module.ac-cn-hongkong-c.public_ips, count.index)}"
-  count  = "${var.count}"
-  type   = "A"
+  domain     = var.domain
+  name       = "nodes.ac-cn-hongkong-c.${var.env}.${terraform.workspace}"
+  value      = element(module.ac-cn-hongkong-c.public_ips, count.index)
+  host_count = var.host_count
+  type       = "A"
 }
+
