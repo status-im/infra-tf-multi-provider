@@ -1,9 +1,9 @@
 output "public_ips" {
-  value = [
+  value = flatten([
     module.do-eu-amsterdam3.public_ips,
     module.gc-us-central1-a.public_ips,
     module.ac-cn-hongkong-c.public_ips,
-  ]
+  ])
 }
 
 output "hosts" {
