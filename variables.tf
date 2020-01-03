@@ -1,3 +1,13 @@
+/* DNS ------------------------------------------*/
+
+variable "cf_zone_id" {
+  description = "ID of CloudFlare zone for host record."
+  /* We default to: statusim.net */
+  default     = "14660d10344c9898521c4ba49789f563"
+}
+
+/* General --------------------------------------*/
+
 variable "host_count" {
   description = "Number of hosts to run."
 }
@@ -20,7 +30,7 @@ variable "domain" {
   default     = "statusim.net"
 }
 
-# Scaling
+/* Scaling --------------------------------------*/
 
 variable "do_size" {
   description = "Size of host to provision in Digital Ocean."
@@ -54,4 +64,3 @@ variable "open_ports" {
   type        = list(string)
   default     = ["80-80", "443-443"]
 }
-

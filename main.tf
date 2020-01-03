@@ -24,18 +24,19 @@ module "do-eu-amsterdam3" {
   region     = "ams3"
 
   /* general */
-  domain = var.domain
+  domain     = var.domain
+  cf_zone_id = var.cf_zone_id
 
   /* firewall */
   open_ports = var.open_ports
 }
 
 resource "cloudflare_record" "do-eu-amsterdam3" {
-  domain     = var.domain
-  name       = "nodes.do-ams3.${var.env}.${terraform.workspace}"
-  value      = module.do-eu-amsterdam3.public_ips[count.index]
-  count      = length(module.do-eu-amsterdam3.public_ips)
-  type       = "A"
+  zone_id = var.cf_zone_id
+  name    = "nodes.do-ams3.${var.env}.${terraform.workspace}"
+  value   = module.do-eu-amsterdam3.public_ips[count.index]
+  count   = length(module.do-eu-amsterdam3.public_ips)
+  type    = "A"
 }
 
 /* Google Cloud */
@@ -55,18 +56,19 @@ module "gc-us-central1-a" {
   zone       = "us-central1-a"
 
   /* general */
-  domain = var.domain
+  domain     = var.domain
+  cf_zone_id = var.cf_zone_id
 
   /* firewall */
   open_ports = var.open_ports
 }
 
 resource "cloudflare_record" "gc-us-central1-a" {
-  domain     = var.domain
-  name       = "nodes.gc-us-central1-a.${var.env}.${terraform.workspace}"
-  value      = module.gc-us-central1-a.public_ips[count.index]
-  count      = length(module.gc-us-central1-a.public_ips)
-  type       = "A"
+  zone_id = var.cf_zone_id
+  name    = "nodes.gc-us-central1-a.${var.env}.${terraform.workspace}"
+  value   = module.gc-us-central1-a.public_ips[count.index]
+  count   = length(module.gc-us-central1-a.public_ips)
+  type    = "A"
 }
 
 /* Alibaba Cloud */
@@ -85,17 +87,17 @@ module "ac-cn-hongkong-c" {
   zone       = "cn-hongkong-c"
 
   /* general */
-  domain = var.domain
+  domain     = var.domain
+  cf_zone_id = var.cf_zone_id
 
   /* firewall */
   open_ports = var.open_ports
 }
 
 resource "cloudflare_record" "ac-cn-hongkong-c" {
-  domain     = var.domain
-  name       = "nodes.ac-cn-hongkong-c.${var.env}.${terraform.workspace}"
-  value      = module.ac-cn-hongkong-c.public_ips[count.index]
-  count      = length(module.ac-cn-hongkong-c.public_ips)
-  type       = "A"
+  zone_id = var.cf_zone_id
+  name    = "nodes.ac-cn-hongkong-c.${var.env}.${terraform.workspace}"
+  value   = module.ac-cn-hongkong-c.public_ips[count.index]
+  count   = length(module.ac-cn-hongkong-c.public_ips)
+  type    = "A"
 }
-
