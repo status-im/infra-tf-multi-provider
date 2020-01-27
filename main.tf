@@ -28,7 +28,8 @@ module "do-eu-amsterdam3" {
   cf_zone_id = var.cf_zone_id
 
   /* firewall */
-  open_ports = var.open_ports
+  open_tcp_ports = var.open_tcp_ports
+  open_udp_ports = var.open_udp_ports
 }
 
 resource "cloudflare_record" "do-eu-amsterdam3" {
@@ -60,7 +61,8 @@ module "gc-us-central1-a" {
   cf_zone_id = var.cf_zone_id
 
   /* firewall */
-  open_ports = var.open_ports
+  open_tcp_ports = var.open_tcp_ports
+  open_udp_ports = var.open_udp_ports
 }
 
 resource "cloudflare_record" "gc-us-central1-a" {
@@ -91,7 +93,8 @@ module "ac-cn-hongkong-c" {
   cf_zone_id = var.cf_zone_id
 
   /* firewall */
-  open_ports = var.open_ports
+  open_tcp_ports = var.open_tcp_ports
+  open_udp_ports = var.open_udp_ports
 }
 
 resource "cloudflare_record" "ac-cn-hongkong-c" {

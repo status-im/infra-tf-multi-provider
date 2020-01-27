@@ -39,4 +39,5 @@ module "widget" {
   * `do_vol_size` - Size in GiB of extra volume for host. (default: `0`)
   * `gc_vol_size` - Size in GiB of the host volume. (default: `10`)
 * __Security__
-  * `open_ports` - TCP ports to enable access from outside. (default: `["80-80","443-443"]`)
+  * `open_tcp_ports` - TCP ports to enable access from outside. (default: `["80-80","443-443"]`)
+  * `open_udp_ports` - UDP ports to enable access from outside. (default: `[]`)

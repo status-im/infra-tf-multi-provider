@@ -57,10 +57,16 @@ variable "ac_size" {
   default     = "ecs.t5-lc1m1.small"
 }
 
-# Firewall
+/* Firewall--------------------------------------*/
 
-variable "open_ports" {
-  description = "Port ranges to enable access from outside. Format: 'N-N'"
+variable "open_tcp_ports" {
+  description = "TCP port ranges to enable access from outside. Format: 'N-N'"
   type        = list(string)
   default     = ["80-80", "443-443"]
+}
+
+variable "open_udp_ports" {
+  description = "UDP port ranges to enable access from outside. Format: 'N-N'"
+  type        = list(string)
+  default     = []
 }
