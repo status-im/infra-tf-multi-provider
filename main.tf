@@ -104,3 +104,36 @@ resource "cloudflare_record" "ac-cn-hongkong-c" {
   count   = length(module.ac-cn-hongkong-c.public_ips)
   type    = "A"
 }
+
+/* Amazon Web Services */
+
+module "aws-eu-central-1a" {
+  source = "github.com/status-im/infra-tf-amazon-web-services"
+
+  /* specific */
+  name  = var.name
+  env   = var.env
+  group = var.group
+
+  /* scaling */
+  host_count    = var.host_count
+  instance_type = var.aws_size
+  root_vol_size = var.aws_vol_size
+  zone          = "eu-central-1a"
+
+  /* general */
+  domain     = var.domain
+  cf_zone_id = var.cf_zone_id
+
+  /* firewall */
+  open_tcp_ports = var.open_tcp_ports
+  open_udp_ports = var.open_udp_ports
+}
+
+resource "cloudflare_record" "aws-eu-central-1a" {
+  zone_id = var.cf_zone_id
+  name    = "nodes.aws-eu-central-1a.${var.env}.${terraform.workspace}"
+  value   = module.aws-eu-central-1a.public_ips[count.index]
+  count   = length(module.aws-eu-central-1a.public_ips)
+  type    = "A"
+}

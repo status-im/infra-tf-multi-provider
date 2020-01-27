@@ -57,6 +57,16 @@ variable "ac_size" {
   default     = "ecs.t5-lc1m1.small"
 }
 
+variable "aws_size" {
+  description = "Size of host to provision in Alibaba Cloud."
+  default     = "t2.micro"
+}
+
+variable "aws_vol_size" {
+  description = "Size in GiB of the host volume."
+  default     = 15
+}
+
 /* Firewall--------------------------------------*/
 
 variable "open_tcp_ports" {

@@ -2,10 +2,11 @@
 
 This is a helper module used by Status internal repos like: [infra-hq](https://github.com/status-im/infra-hq), [infra-misc](https://github.com/status-im/infra-misc), [infra-eth-cluster](https://github.com/status-im/infra-eth-cluster), or [infra-swarm](https://github.com/status-im/infra-swarm).
 
-It allows for use of the following three cloud providers via one module:
+It allows for use of the following four cloud providers via one module:
+* [amazon-web-services](https://github.com/status-im/infra-tf-amazon-web-services)
+* [alibaba-cloud](https://github.com/status-im/infra-tf-alibaba-cloud)
 * [digital-ocean](https://github.com/status-im/infra-tf-digital-ocean)
 * [google-cloud](https://github.com/status-im/infra-tf-google-cloud)
-* [alibaba-cloud](https://github.com/status-im/infra-tf-alibaba-cloud)
 
 # Usage
 
