@@ -20,8 +20,10 @@ module "do-eu-amsterdam3" {
   /* scaling */
   host_count = var.host_count
   size       = var.do_size
-  vol_size   = var.do_vol_size
   region     = "ams3"
+
+  /* disks */
+  data_vol_size = var.do_data_vol_size
 
   /* general */
   domain     = var.domain
@@ -53,8 +55,11 @@ module "gc-us-central1-a" {
   /* scaling */
   host_count = var.host_count
   type       = var.gc_size
-  vol_size   = var.gc_vol_size
   zone       = "us-central1-a"
+
+  /* disks */
+  root_vol_size = var.gc_root_vol_size
+  data_vol_size = var.gc_data_vol_size
 
   /* general */
   domain     = var.domain
@@ -87,6 +92,9 @@ module "ac-cn-hongkong-c" {
   host_count = var.host_count
   type       = var.ac_size
   zone       = "cn-hongkong-c"
+
+  /* disks */
+  data_vol_size = var.ac_data_vol_size
 
   /* general */
   domain     = var.domain

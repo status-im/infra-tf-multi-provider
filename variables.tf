@@ -37,7 +37,7 @@ variable "do_size" {
   default     = "s-1vcpu-1gb"
 }
 
-variable "do_vol_size" {
+variable "do_data_vol_size" {
   description = "Size in GiB of extra volume for host."
   default     = 0
 }
@@ -47,14 +47,24 @@ variable "gc_size" {
   default     = "n1-standard-1"
 }
 
-variable "gc_vol_size" {
+variable "gc_root_vol_size" {
   description = "Size in GiB of the host volume."
   default     = 15
+}
+
+variable "gc_data_vol_size" {
+  description = "Size in GiB of extra data volume for instance."
+  default     = 0
 }
 
 variable "ac_size" {
   description = "Size of host to provision in Alibaba Cloud."
   default     = "ecs.t5-lc1m1.small"
+}
+
+variable "ac_data_vol_size" {
+  description = "Size of extra data volume attached to the instance."
+  default     = 0
 }
 
 /* Firewall--------------------------------------*/
