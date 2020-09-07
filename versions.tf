@@ -1,10 +1,22 @@
 
 terraform {
-  required_version = ">= 0.12"
+  required_version = ">= 0.13"
   required_providers {
-    alicloud     = " = 1.68.0"
-    cloudflare   = " = 2.3.0"
-    digitalocean = " = 1.20.0"
-    google       = " = 3.4.0"
+    alicloud = {
+      source  = "aliyun/alicloud"
+      version = " = 1.95.0"
+    }
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = " = 2.10.1"
+    }
+    digitalocean = {
+      source  = "digitalocean/digitalocean"
+      version = " = 1.22.2"
+    }
+    google = {
+      source  = "hashicorp/google"
+      version = " = 3.37.0"
+    }
   }
 }
