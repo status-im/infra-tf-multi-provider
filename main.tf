@@ -7,6 +7,10 @@
  * module and give it a different region/size argument.
  */
 
+locals {
+  stage = var.stage != "" ? var.stage : terraform.workspace
+}
+
 /* Digital Ocean */
 
 module "do-eu-amsterdam3" {
@@ -14,8 +18,9 @@ module "do-eu-amsterdam3" {
 
   /* specific */
   name  = var.name
-  env   = var.env
   group = var.group
+  env   = var.env
+  stage = local.stage
 
   /* scaling */
   host_count = var.host_count
@@ -36,7 +41,7 @@ module "do-eu-amsterdam3" {
 
 resource "cloudflare_record" "do-eu-amsterdam3" {
   zone_id = var.cf_zone_id
-  name    = "nodes.do-ams3.${var.env}.${terraform.workspace}"
+  name    = "nodes.do-ams3.${var.env}.${local.stage}"
   value   = module.do-eu-amsterdam3.public_ips[count.index]
   count   = length(module.do-eu-amsterdam3.public_ips)
   type    = "A"
@@ -49,8 +54,9 @@ module "gc-us-central1-a" {
 
   /* specific */
   name  = var.name
-  env   = var.env
   group = var.group
+  env   = var.env
+  stage = local.stage
 
   /* scaling */
   host_count = var.host_count
@@ -72,7 +78,7 @@ module "gc-us-central1-a" {
 
 resource "cloudflare_record" "gc-us-central1-a" {
   zone_id = var.cf_zone_id
-  name    = "nodes.gc-us-central1-a.${var.env}.${terraform.workspace}"
+  name    = "nodes.gc-us-central1-a.${var.env}.${local.stage}"
   value   = module.gc-us-central1-a.public_ips[count.index]
   count   = length(module.gc-us-central1-a.public_ips)
   type    = "A"
@@ -85,8 +91,9 @@ module "ac-cn-hongkong-c" {
 
   /* specific */
   name  = var.name
-  env   = var.env
   group = var.group
+  env   = var.env
+  stage = local.stage
 
   /* scaling */
   host_count = var.host_count
@@ -107,7 +114,7 @@ module "ac-cn-hongkong-c" {
 
 resource "cloudflare_record" "ac-cn-hongkong-c" {
   zone_id = var.cf_zone_id
-  name    = "nodes.ac-cn-hongkong-c.${var.env}.${terraform.workspace}"
+  name    = "nodes.ac-cn-hongkong-c.${var.env}.${local.stage}"
   value   = module.ac-cn-hongkong-c.public_ips[count.index]
   count   = length(module.ac-cn-hongkong-c.public_ips)
   type    = "A"

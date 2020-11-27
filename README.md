@@ -29,6 +29,7 @@ module "widget" {
 * __General__
   * `name` - Prefix of hostname before index. (default: `node`)
   * `env` - Environment for these hosts, affects DNS entries.
+  * `stage` - Name of stage, like `prod`, `dev`, or `staging`.
   * `group` - Ansible group to assign hosts to.
   * `domain` - DNS Domain to update
 * __Scaling__
