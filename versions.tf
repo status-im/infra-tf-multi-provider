@@ -12,7 +12,7 @@ terraform {
     }
     digitalocean = {
       source  = "digitalocean/digitalocean"
-      version = " = 1.22.2"
+      version = " = 2.5.1"
     }
     google = {
       source  = "hashicorp/google"
