@@ -89,13 +89,13 @@ variable "ac_data_vol_size" {
 /* Firewall--------------------------------------*/
 
 variable "open_tcp_ports" {
-  description = "TCP port ranges to enable access from outside. Format: 'N-N'"
+  description = "TCP port ranges to enable access from outside. Format: 'N', 'N-N'"
   type        = list(string)
-  default     = ["80-80", "443-443"]
+  default     = []
 }
 
 variable "open_udp_ports" {
-  description = "UDP port ranges to enable access from outside. Format: 'N-N'"
+  description = "UDP port ranges to enable access from outside. Format: 'N', 'N-N'"
   type        = list(string)
   default     = []
 }

@@ -19,7 +19,7 @@ module "widget" {
   do_size    = "s-1vcpu-2gb"
   gc_size    = "n1-standard-1"
   ac_size    = "ecs.sn1ne.large"
-  open_ports = ["1234-1234"]
+  open_ports = ["1234", "2345-3456"]
 }
 ```
 [More details.](https://www.terraform.io/docs/modules/sources.html#github)
@@ -42,5 +42,5 @@ module "widget" {
   * `gc_data_vol_size` - Size in GiB of the extra data volume. (default: `0`)
   * `gc_rott_vol_size` - Size in GiB of the host volume. (default: `15`)
 * __Security__
-  * `open_tcp_ports` - TCP ports to enable access from outside. (default: `["80-80","443-443"]`)
+  * `open_tcp_ports` - TCP ports to enable access from outside. (default: `[]`)
   * `open_udp_ports` - UDP ports to enable access from outside. (default: `[]`)
