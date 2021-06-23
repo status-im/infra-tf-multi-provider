@@ -3,8 +3,7 @@
 variable "cf_zone_id" {
   description = "ID of CloudFlare zone for host record."
   type        = string
-  /* We default to: statusim.net */
-  default     = "14660d10344c9898521c4ba49789f563"
+  default     = "14660d10344c9898521c4ba49789f563" /* statusim.net */
 }
 
 /* General --------------------------------------*/
