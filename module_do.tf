@@ -31,7 +31,7 @@ module "do-eu-amsterdam3" {
   /* scaling */
   count      = local.do_count > 0 ? 1 : 0
   host_count = local.do_count
-  size       = var.do_size
+  type       = var.do_size
   region     = "ams3"
 
   /* disks */
