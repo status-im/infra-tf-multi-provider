@@ -6,8 +6,8 @@ variable "do_count" {
   default     = -1
 }
 
-variable "do_size" {
-  description = "Size of host to provision in Digital Ocean."
+variable "do_type" {
+  description = "Type of host to provision in Digital Ocean."
   type        = string
   default     = "s-1vcpu-1gb"
 }
@@ -31,7 +31,7 @@ module "do-eu-amsterdam3" {
   /* scaling */
   count      = local.do_count > 0 ? 1 : 0
   host_count = local.do_count
-  type       = var.do_size
+  type       = var.do_type
   region     = "ams3"
 
   /* disks */

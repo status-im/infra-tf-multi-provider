@@ -6,8 +6,8 @@ variable "ac_count" {
   default     = -1
 }
 
-variable "ac_size" {
-  description = "Size of host to provision in Alibaba Cloud."
+variable "ac_type" {
+  description = "Type of host to provision in Alibaba Cloud."
   type        = string
   default     = "ecs.t5-lc1m1.small"
 }
@@ -30,7 +30,7 @@ module "ac-cn-hongkong-c" {
   /* scaling */
   count      = local.ac_count > 0 ? 1 : 0
   host_count = local.ac_count
-  type       = var.ac_size
+  type       = var.ac_type
   zone       = "cn-hongkong-c"
 
   /* disks */

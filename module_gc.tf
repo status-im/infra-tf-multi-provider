@@ -6,8 +6,8 @@ variable "gc_count" {
   default     = -1
 }
 
-variable "gc_size" {
-  description = "Size of host to provision in Google Cloud."
+variable "gc_type" {
+  description = "Type of host to provision in Google Cloud."
   type        = string
   default     = "n1-standard-1"
 }
@@ -36,7 +36,7 @@ module "gc-us-central1-a" {
   /* scaling */
   count      = local.gc_count > 0 ? 1 : 0
   host_count = local.gc_count
-  type       = var.gc_size
+  type       = var.gc_type
   zone       = "us-central1-a"
 
   /* disks */
