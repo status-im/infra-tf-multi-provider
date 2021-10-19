@@ -8,11 +8,6 @@ variable "cf_zone_id" {
 
 /* General --------------------------------------*/
 
-variable "host_count" {
-  description = "Number of hosts to run."
-  type        = number
-}
-
 variable "name" {
   description = "Prefix of hostname before index."
   type        = string
@@ -43,6 +38,18 @@ variable "domain" {
 
 /* Scaling --------------------------------------*/
 
+variable "host_count" {
+  description = "Number of hosts to run. Overridden by individual provider counts."
+  type        = number
+}
+
+
+variable "do_count" {
+  description = "Number of Digital Ocean hosts to run."
+  type        = number
+  default     = -1
+}
+
 variable "do_size" {
   description = "Size of host to provision in Digital Ocean."
   type        = string
@@ -53,6 +60,12 @@ variable "do_data_vol_size" {
   description = "Size in GiB of extra volume for host."
   type        = number
   default     = 0
+}
+
+variable "gc_count" {
+  description = "Number of Google Cloud hosts to run."
+  type        = number
+  default     = -1
 }
 
 variable "gc_size" {
@@ -71,6 +84,12 @@ variable "gc_data_vol_size" {
   description = "Size in GiB of extra data volume for instance."
   type        = number
   default     = 0
+}
+
+variable "ac_count" {
+  description = "Number of Alibaba Cloud hosts to run."
+  type        = number
+  default     = -1
 }
 
 variable "ac_size" {
