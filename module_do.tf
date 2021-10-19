@@ -1,5 +1,24 @@
 /* Digital Ocean */
 
+variable "do_count" {
+  description = "Number of Digital Ocean hosts to run."
+  type        = number
+  default     = -1
+}
+
+variable "do_size" {
+  description = "Size of host to provision in Digital Ocean."
+  type        = string
+  default     = "s-1vcpu-1gb"
+}
+
+variable "do_data_vol_size" {
+  description = "Size in GiB of extra volume for host."
+  type        = number
+  default     = 0
+}
+
+
 module "do-eu-amsterdam3" {
   source = "github.com/status-im/infra-tf-digital-ocean"
 

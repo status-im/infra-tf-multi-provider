@@ -1,5 +1,29 @@
 /* Google Cloud */
 
+variable "gc_count" {
+  description = "Number of Google Cloud hosts to run."
+  type        = number
+  default     = -1
+}
+
+variable "gc_size" {
+  description = "Size of host to provision in Google Cloud."
+  type        = string
+  default     = "n1-standard-1"
+}
+
+variable "gc_root_vol_size" {
+  description = "Size in GiB of the host volume."
+  type        = number
+  default     = 15
+}
+
+variable "gc_data_vol_size" {
+  description = "Size in GiB of extra data volume for instance."
+  type        = number
+  default     = 0
+}
+
 module "gc-us-central1-a" {
   source = "github.com/status-im/infra-tf-google-cloud"
 

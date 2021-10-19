@@ -1,5 +1,23 @@
 /* Alibaba Cloud */
 
+variable "ac_count" {
+  description = "Number of Alibaba Cloud hosts to run."
+  type        = number
+  default     = -1
+}
+
+variable "ac_size" {
+  description = "Size of host to provision in Alibaba Cloud."
+  type        = string
+  default     = "ecs.t5-lc1m1.small"
+}
+
+variable "ac_data_vol_size" {
+  description = "Size of extra data volume attached to the instance."
+  type        = number
+  default     = 0
+}
+
 module "ac-cn-hongkong-c" {
   source = "github.com/status-im/infra-tf-alibaba-cloud"
 
