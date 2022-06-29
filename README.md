@@ -21,9 +21,12 @@ module "appx" {
 
   /* Scaling */
   host_count = 2
-  do_type    = "s-1vcpu-2gb"
-  gc_type    = "n1-standard-1"
-  ac_type   = "ecs.sn1ne.large"
+  do_size    = "s-1vcpu-2gb"
+  gc_size    = "n1-standard-1"
+  ac_size    = "ecs.sn1ne.large"
+  he_size    = "cpx21"
+
+  /* Firewall */
   open_ports = ["1234", "2345-3456"]
 }
 ```
@@ -57,3 +60,8 @@ Each cloud provider is optional and can be disabled by setting their respective 
     * `gc_type` - Type of host to provision in Google Cloud. (default: `n1-standard-1`)
     * `gc_data_vol_size` - Size in GiB of the extra data volume. (default: `0`)
     * `gc_root_vol_size` - Size in GiB of the host volume. (default: `15`)
+  * __Hetzner Cloud__
+    * `he_count` - Number of Google Cloud hosts to run.
+    * `he_type` - Type of host to provision in Google Cloud. (default: `n1-standard-1`)
+    * `he_data_vol_size` - Size in GiB of the extra data volume. (default: `0`)
+    * `he_root_vol_size` - Size in GiB of the host volume. (default: `15`)

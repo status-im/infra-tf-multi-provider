@@ -15,4 +15,5 @@ locals {
   ac_count = var.ac_count != -1 ? var.ac_count : var.host_count
   do_count = var.do_count != -1 ? var.do_count : var.host_count
   gc_count = var.gc_count != -1 ? var.gc_count : var.host_count
+  he_count = var.he_count != -1 ? var.he_count : var.host_count
 }
