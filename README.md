@@ -21,9 +21,9 @@ module "appx" {
 
   /* Scaling */
   host_count = 2
-  do_size    = "s-1vcpu-2gb"
-  gc_size    = "n1-standard-1"
-  ac_size    = "ecs.sn1ne.large"
+  do_type    = "s-1vcpu-2gb"
+  gc_type    = "n1-standard-1"
+  ac_type   = "ecs.sn1ne.large"
   open_ports = ["1234", "2345-3456"]
 }
 ```
