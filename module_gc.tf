@@ -18,10 +18,23 @@ variable "gc_root_vol_size" {
   default     = 15
 }
 
+variable "gc_root_vol_type" {
+  description = "Size of the base image."
+  type        = string
+  default     = "pd-standard"
+}
+
 variable "gc_data_vol_size" {
   description = "Size in GiB of extra data volume for instance."
   type        = number
   default     = 0
+}
+
+variable "gc_data_vol_type" {
+  description = "Type of the extra data volume."
+  type        = string
+  default     = "pd-balanced"
+  /* Use: gcloud compute disk-types list */
 }
 
 module "gc-us-central1-a" {
@@ -41,7 +54,9 @@ module "gc-us-central1-a" {
 
   /* disks */
   root_vol_size = var.gc_root_vol_size
+  root_vol_type = var.gc_root_vol_type
   data_vol_size = var.gc_data_vol_size
+  data_vol_type = var.gc_data_vol_type
 
   /* general */
   domain     = var.domain
