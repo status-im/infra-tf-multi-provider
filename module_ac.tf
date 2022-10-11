@@ -15,7 +15,7 @@ variable "ac_type" {
 variable "ac_root_vol_size" {
   description = "Size in GiB of the root volume."
   type        = number
-  default     = 15
+  default     = 20
 }
 
 variable "ac_root_vol_type" {
