@@ -12,11 +12,30 @@ variable "ac_type" {
   default     = "ecs.t5-lc1m1.small"
 }
 
+variable "ac_root_vol_size" {
+  description = "Size in GiB of the root volume."
+  type        = number
+  default     = 15
+}
+
+variable "ac_root_vol_type" {
+  description = "I/O optimization type of root volume."
+  type        = string
+  default     = "cloud_ssd"
+}
+
 variable "ac_data_vol_size" {
-  description = "Size of extra data volume attached to the instance."
+  description = "Size in GiB of extra data volume for instance."
   type        = number
   default     = 0
 }
+
+variable "ac_data_vol_type" {
+  description = "I/O optimization type of extra data volume."
+  type        = string
+  default     = "cloud_efficiency"
+}
+
 
 module "ac-cn-hongkong-c" {
   source = "github.com/status-im/infra-tf-alibaba-cloud"
@@ -34,7 +53,10 @@ module "ac-cn-hongkong-c" {
   zone       = "cn-hongkong-c"
 
   /* disks */
+  root_vol_size = var.ac_root_vol_size
+  root_vol_type = var.ac_root_vol_type
   data_vol_size = var.ac_data_vol_size
+  data_vol_type = var.ac_data_vol_type
 
   /* general */
   domain     = var.domain

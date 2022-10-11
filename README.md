@@ -47,7 +47,10 @@ Each cloud provider is optional and can be disabled by setting their respective 
   * __Alibaba Cloud__
     * `ac_count` - Number of Alibaba Cloud hosts to run.
     * `ac_type` - Type of host to provision in Alibaba Cloud. (default: `ecs.t5-lc1m1.small`)
-    * `ac_data_vol_size` - Size in GiB of extra volume for host. (default: `0`)
+    * `ac_root_vol_type` - Size in GiB of the host volume. (default: `15`)
+    * `ac_root_vol_size` - I/O optimization type of extra data volume. (default: `cloud_efficiency`)
+    * `ac_data_vol_type` - Size in GiB of extra volume for host. (default: `0`)
+    * `ac_data_vol_size` - I/O optimization type of root volume. (default: `cloud_ssd`)
   * __Digital Ocean__
     * `do_count` - Number of Digital Ocean hosts to run.
     * `do_type` - Type of host to provision in Digital Ocean. (default: `s-1vcpu-1gb`)
@@ -55,5 +58,5 @@ Each cloud provider is optional and can be disabled by setting their respective 
   * __Google Cloud__
     * `gc_count` - Number of Google Cloud hosts to run.
     * `gc_type` - Type of host to provision in Google Cloud. (default: `n1-standard-1`)
-    * `gc_data_vol_size` - Size in GiB of the extra data volume. (default: `0`)
     * `gc_root_vol_size` - Size in GiB of the host volume. (default: `15`)
+    * `gc_data_vol_size` - Size in GiB of the extra data volume. (default: `0`)
