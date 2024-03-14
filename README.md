@@ -38,10 +38,12 @@ Each cloud provider is optional and can be disabled by setting their respective 
   * `env` - Environment for these hosts, affects DNS entries.
   * `stage` - Name of stage, like `prod`, `dev`, or `staging`.
   * `group` - Ansible group to assign hosts to.
-  * `domain` - DNS Domain to update
 * __Security__
   * `open_tcp_ports` - TCP ports to enable access from outside. (default: `[]`)
   * `open_udp_ports` - UDP ports to enable access from outside. (default: `[]`)
+* __DNS__
+  * `cf_zone_id` - CloudFlare DNS domain zone ID. (ID for `status.im`)
+  * `domain` - DNS Domain for hostnames. (default: `status.im`)
 * __Scaling__
   * `host_count` - Number of hosts to run. Overridden by individual provider counts.
   * __Alibaba Cloud__
