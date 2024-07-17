@@ -42,6 +42,7 @@ variable "group" {
 variable "host_count" {
   description = "Number of hosts to run. Overridden by individual provider counts."
   type        = number
+  default     = 1
 }
 
 /* Firewall--------------------------------------*/
