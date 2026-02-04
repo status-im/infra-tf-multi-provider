@@ -23,8 +23,10 @@ module "appx" {
   host_count = 2
   do_type    = "s-1vcpu-2gb"
   gc_type    = "n1-standard-1"
-  ac_type   = "ecs.sn1ne.large"
-  open_ports = ["1234", "2345-3456"]
+  ac_type    = "ecs.sn1ne.large"
+
+  /* Security */
+  open_tcp_ports = ["1234", "2345-3456"]
 }
 ```
 Each cloud provider is optional and can be disabled by setting their respective `*_count` variable to `0`.
