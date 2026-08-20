@@ -36,6 +36,12 @@ variable "ac_data_vol_type" {
   default     = "cloud_efficiency"
 }
 
+variable "ac_elastic_ip" {
+  description = "Whether instance received n Elastic IP."
+  type        = bool
+  default     = false
+}
+
 variable "ac_max_band_out" {
   description = "Maximum outgoing bandwidth to the public network, measured in Mbps."
   type        = number
@@ -76,6 +82,7 @@ module "ac-cn-hongkong-c" {
   host_count   = local.ac_count
   type         = var.ac_type
   max_band_out = var.ac_max_band_out
+  elastic_ip   = var.ac_elastic_ip
   zone         = "cn-hongkong-c"
 
   /* disks */
