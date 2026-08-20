@@ -36,6 +36,31 @@ variable "ac_data_vol_type" {
   default     = "cloud_efficiency"
 }
 
+variable "ac_max_band_out" {
+  description = "Maximum outgoing bandwidth to the public network, measured in Mbps."
+  type        = number
+  default     = 50 # Mbps
+}
+
+/* BILLING --------------------------------------*/
+
+variable "ac_period_unit" {
+  description = "Time period in which we pay for instances."
+  type        = string
+  default     = "Month" /* Other: Week */
+}
+
+variable "ac_instance_charge_type" {
+  description = "Way in which the instance is paid for."
+  type        = string
+  default     = "PostPaid" /* Other: PrePaid */
+}
+
+variable "ac_internet_charge_type" {
+  description = "Public Internet usage by provisioned bandwidth or actual outbound traffic."
+  type        = string
+  default     = "PayByTraffic" # Or PayByBandwidth
+}
 
 module "ac-cn-hongkong-c" {
   source = "github.com/status-im/infra-tf-alibaba-cloud"
@@ -47,10 +72,11 @@ module "ac-cn-hongkong-c" {
   stage = local.stage
 
   /* scaling */
-  count      = local.ac_count > 0 ? 1 : 0
-  host_count = local.ac_count
-  type       = var.ac_type
-  zone       = "cn-hongkong-c"
+  count        = local.ac_count > 0 ? 1 : 0
+  host_count   = local.ac_count
+  type         = var.ac_type
+  max_band_out = var.ac_max_band_out
+  zone         = "cn-hongkong-c"
 
   /* disks */
   root_vol_size = var.ac_root_vol_size
@@ -65,6 +91,11 @@ module "ac-cn-hongkong-c" {
   /* firewall */
   open_tcp_ports = var.open_tcp_ports
   open_udp_ports = var.open_udp_ports
+
+  /* billing */
+  period_unit          = var.ac_period_unit
+  instance_charge_type = var.ac_instance_charge_type
+  internet_charge_type = var.ac_internet_charge_type
 }
 
 resource "cloudflare_record" "ac-cn-hongkong-c" {
