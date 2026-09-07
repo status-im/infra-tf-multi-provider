@@ -15,7 +15,7 @@ variable "gc_type" {
 variable "gc_root_vol_size" {
   description = "Size in GiB of the host volume."
   type        = number
-  default     = 15
+  default     = 20
 }
 
 variable "gc_root_vol_type" {
